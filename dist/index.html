@@ -14,6 +14,7 @@
 </head>
 <body>
   <div id="msg-box">
+      <p id='wait-msg'></p>
       <div id="set-name">
           <div id="set-icon"></div>
           <h3>Current Weather Information</h3>
@@ -24,10 +25,18 @@
         <input type='submit' id='submit-city' Value='Submit'>
       </form>
       <div>
-          <h3></h3>
-           <p id='wait-msg'></p>
+          <div class='basic-info'>
+          <p id="city"></p>
+          <h3 id='country'></h3>
+          <div class="c-flag"></div>
+          </div>
       </div>
-      
+      <div>
+        <h4 id="temp-display"></h4><span id='temp-symbol'></span>
+      </div>
+
+
+     <button id="toggle-temp">See temp in F</button>
   </div>
 
 <script src="main.js"></script>   
