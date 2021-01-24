@@ -9,12 +9,11 @@ let state = false;
 
 export async function getWeatherInfo(city) {
   const api_key = '4c726c2ad8e25995fa54253e43f9b966';
-  waitMsg.innerText = 'Loaading';
+  waitMsg.innerText = 'Loading.....';
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`, {mode: 'cors'});
     const weatherdata = await response.json();
-    waitMsg.innerText = '';
-    console.log(weatherdata);    
+    waitMsg.innerText = '';   
     const icon = weatherdata.weather[0].icon;
     currentIcon.innerHTML = `<img src="./icons/${icon}.png">`;
     getCountyFlag(weatherdata.sys.country);
@@ -61,7 +60,7 @@ const getDateTime = () => {
   let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   let dateTime = date+' '+time;
-  clock.innerText = dateTime;
+  clock.innerText = `Local Time: ${dateTime}`;
 }
 
 function startTime(){
@@ -76,13 +75,13 @@ const dispCountryInfo = (city, countryCode) => {
 }
 
 const displayFeelsInfo = (feels, description, humid) => {
-  tempFeels.innerText = `Feels Like: ${feels}\u00B0C | `;
-  weatherDescrib.innerText = `${description} | `;
-  humidity.innerText = `Humidity: ${humid}%`;
+  tempFeels.innerText = `Feels Like: ${feels}\u00B0C`;
+  weatherDescrib.innerText = ` ${description}`;
+  humidity.innerText = ` Humidity: ${humid}%`;
 }
 
 const displaySunInfo = (lon, lat, speed) => {
-  cityLon.innerText = `Lon: ${lon} | `;
-  cityLat.innerText = `Lat: ${lat} | `;
+  cityLon.innerText = `Lon: ${lon}`;
+  cityLat.innerText = `Lat: ${lat}`;
   windSpeed.innerText = `Wind Speed: ${speed}M/s`;
 }
