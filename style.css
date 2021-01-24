@@ -1,18 +1,179 @@
+/* font-family: 'Courgette', cursive; ----- for description */ 
+/* font-family: 'Courgette', cursive;
+font-family: 'Frank Ruhl Libre', serif; */
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background: #eebb79;
+  background-image: linear-gradient(to bottom right, #779bd600, rgb(70, 92, 216)), url('./icons/weather.jpg');
+  background-color: #488296;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 95.5vh;
 }
 
 #msg-box {
-  background: #f18b04;
-  width: 50%;
+  background: #0d9de3;
+  width: 40%;
   margin: 2rem auto 0 auto;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+#set-name,
+.basic-info,
+.set-temp,
+.disp-data2,
+.disp-data3 {
+  display: flex;
+  justify-content: center;
+}
+
+#set-name h3,
+.error-info,
+#wait-msg,
+.basic-info,
+.disp-data2,
+.disp-data3 {
+  font-family: 'Frank Ruhl Libre', serif;
+}
+
+#set-name h3 {
+  margin-top: 0.7rem;
+  margin-left: -3rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+#set-icon img {
+  background: #f8f4f4;
+  width: 50%;
+  min-height: 30%;
+  border-radius: 10px;
+}
+
+.error-info {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #f71010;
+  padding: 0.5rem;
+}
+
+form {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+input[type='text'],
+input[type='submit'],
+#toggle-temp {
+  font-family: 'Courgette', cursive;
+}
+
+input[type='text'],
+input[type='submit'] {
+  font-size: 1.2rme;
+  border-radius: 5px;
+  padding: 0.2rem;
+  border: none;
+  box-shadow: none;
+}
+
+input[type='submit'] {
+  margin-left: -0.8rem;
+}
+
+#wait-msg {
+  font-size: large;
+  color: #0de33b;
+  font-size: 2rem;
+}
+
+.basic-info {
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+#city {
+  font-size: 1.8rem;
+  margin-top: 1.2rem;
+}
+
+#country {
+  margin-top: 1.2rem;
+  font-size: 2.2rem;
+  padding-left: 0.7rem;
+}
+
+.c-flag {
+  padding-left: 0.6rem;
+}
+
+.set-temp {
+  color: #fff;
+}
+
+#temp-display {
+  font-size: 2.5rem;
+}
+
+#temp-symbol {
+  font-size: 2rem;
+  margin-top: 0.3rem;
+}
+
+.disp-data2,
+.disp-data3 {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.disp-data2 {
+  margin-top: 2rem;
+}
+
+#description,
+#sun-set {
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.buttonDiv {
+  margin: 0 auto;
+  width: 30%;
+}
+
+#feels,
+#sun-rise {
+  padding-right: 0.4rem;
+}
+
+#humidity,
+#wind-speed {
+  padding-left: 0.4rem;
+}
+
+.clock {
+  margin: 1rem auto 0 auto;
+  color: #fff;
+  width: 50%;
 }
 
 #toggle-temp {
   display: none;
+  border: none;
+  box-shadow: none;
+  height: 2rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 

@@ -16,23 +16,22 @@
   <div id="msg-box">
       <div id="set-name">
           <div id="set-icon"></div>
-          <h3>Current Weather Information</h3>
+          <h3>Current Weather</h3>
       </div>
-      <p id='wait-msg'></p>
       <div class='error-info'></div>
       <form>
         <input type="text" id='enter-city' placeholder="Enter name of city">
         <input type='submit' id='submit-city' Value='Submit'>
       </form>
-      <div>
-          <div class='basic-info'>
-          <p id="city"></p>
-          <h3 id='country'></h3>
-          <div class="c-flag"></div>
-          </div>
+      <p id='wait-msg' class='text-center'></p>
+      <div class='basic-info'>
+        <p id="city"></p>
+        <h3 id='country'></h3>
+        <div class="c-flag"></div>
       </div>
       <div class='set-temp'>
-        <h4 id="temp-display"></h4><span id='temp-symbol'></span>
+        <h4 id="temp-display"></h4>
+        <span id='temp-symbol'></span>
       </div>
       <div class='disp-data2'>
         <p id='feels'></p>
@@ -44,7 +43,9 @@
         <p id='sun-set'></p>
         <p id='wind-speed'></p>
       </div>
-     <button id="toggle-temp">See temp in F</button>
+      <div class='buttonDiv'>
+        <button id="toggle-temp">See temp in F</button>
+      </div>
      <div class='clock'> 
      </div>
   </div>
