@@ -7,4 +7,13 @@ export const countryFlag = document.querySelector('.c-flag');
 export const tempDisplay = document.querySelector('#temp-display');
 export const tempSymbol = document.querySelector('#temp-symbol');
 export const toggleTemp = document.querySelector('#toggle-temp');
-
+export const dispTime = document.querySelector('#disp-time');
+export const clock = document.querySelector('.clock');
+export const currentCity = document.querySelector('#city');
+export const currentCountry = document.querySelector('#country');
+export const tempFeels = document.querySelector('#feels');
+export const weatherDescrib = document.querySelector('#description');
+export const humidity = document.querySelector('#humidity');
+export const cityLon = document.querySelector('#sun-rise');
+export const cityLat = document.querySelector('#sun-set');
+export const windSpeed = document.querySelector('#wind-speed');

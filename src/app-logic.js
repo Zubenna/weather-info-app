@@ -1,11 +1,12 @@
 import { 
-  currentIcon, waitMsg, errorInfo, enterCity, tempSymbol,
-  tempDisplay, countryFlag, toggleTemp,
+  currentIcon, waitMsg, errorInfo, enterCity, tempSymbol, clock, currentCity, tempFeels,
+  tempDisplay, countryFlag, toggleTemp, dispTime, currentCountry, weatherDescrib,
+  humidity, cityLon, cityLat, windSpeed,
 } from './documentObjects';
-
 
 let temp = '';
 let state = false;
+
 export async function getWeatherInfo(city) {
   const api_key = '4c726c2ad8e25995fa54253e43f9b966';
   waitMsg.innerText = 'Loaading';
@@ -13,16 +14,20 @@ export async function getWeatherInfo(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`, {mode: 'cors'});
     const weatherdata = await response.json();
     waitMsg.innerText = '';
-    console.log( weatherdata);
+    console.log(weatherdata);    
     const icon = weatherdata.weather[0].icon;
     currentIcon.innerHTML = `<img src="./icons/${icon}.png">`;
-    // const countryCode = weatherdata.sys.country;
     getCountyFlag(weatherdata.sys.country);
     temp = Math.floor(weatherdata.main.temp - 273);
     tempDisplay.innerText = `${temp}\u00B0`;
     tempSymbol.innerText = 'C';
     errorInfo.innerText = '';
-    // setTemperature();
+    toggleTemp.style.display = 'block';
+    dispCountryInfo(weatherdata.name, weatherdata.sys.country);
+    const feels = Math.floor(weatherdata.main.feels_like - 273);
+    displayFeelsInfo(feels, weatherdata.weather[0].description, weatherdata.main.humidity);
+    displaySunInfo(weatherdata.coord.lon, weatherdata.coord.lat, weatherdata.wind.speed);
+    startTime();
   } catch(err) {
       if(enterCity.value === '') {
         errorInfo.innerText = 'Nothing to display, Enter city name';
@@ -49,4 +54,35 @@ export const getTemperature = () => {
     tempSymbol.innerText = 'C';
     toggleTemp.innerText = 'See temp in F';
   }
+}
+
+const getDateTime = () => {
+  let today = new Date();
+  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  let dateTime = date+' '+time;
+  clock.innerText = dateTime;
+}
+
+function startTime(){
+    setInterval(() => {
+      getDateTime();
+    }, 500);
+}
+
+const dispCountryInfo = (city, countryCode) => {
+  currentCity.innerText = `${city}, `;
+  currentCountry.innerText = countryCode;
+}
+
+const displayFeelsInfo = (feels, description, humid) => {
+  tempFeels.innerText = `Feels Like: ${feels}\u00B0C | `;
+  weatherDescrib.innerText = `${description} | `;
+  humidity.innerText = `Humidity: ${humid}%`;
+}
+
+const displaySunInfo = (lon, lat, speed) => {
+  cityLon.innerText = `Lon: ${lon} | `;
+  cityLat.innerText = `Lat: ${lat} | `;
+  windSpeed.innerText = `Wind Speed: ${speed}M/s`;
 }

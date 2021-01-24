@@ -6,9 +6,8 @@ import { enterCity, submitCity, toggleTemp} from './documentObjects';
 submitCity.addEventListener('click', (e) => {
   e.preventDefault(e);
   const cityName = enterCity.value;
-  console.log('test 1');
   getWeatherInfo(cityName);
-  console.log('test 2');
+  enterCity.value = '';
 });
 
 toggleTemp.addEventListener('click', (e) => {
