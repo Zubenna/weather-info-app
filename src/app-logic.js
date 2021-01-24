@@ -1,20 +1,47 @@
-import { 
+import {
   currentIcon, waitMsg, errorInfo, enterCity, tempSymbol, clock, currentCity, tempFeels,
-  tempDisplay, countryFlag, toggleTemp, dispTime, currentCountry, weatherDescrib,
+  tempDisplay, countryFlag, toggleTemp, currentCountry, weatherDescrib,
   humidity, cityLon, cityLat, windSpeed,
 } from './documentObjects';
 
 let temp = '';
 let state = false;
 
+const getCountyFlag = (cCode) => {
+  countryFlag.innerHTML = `<img src="https://www.countryflags.io/${cCode}/flat/64.png">`;
+}
+
+const dispCountryInfo = (city, countryCode) => {
+  currentCity.innerText = `${city}, `;
+  currentCountry.innerText = countryCode;
+}
+
+const displayFeelsInfo = (feels, description, humid) => {
+  tempFeels.innerText = `Feels Like: ${feels}\u00B0C`;
+  weatherDescrib.innerText = ` ${description}`;
+  humidity.innerText = ` Humidity: ${humid}%`;
+}
+
+const displaySunInfo = (lon, lat, speed) => {
+  cityLon.innerText = `Lon: ${lon}`;
+  cityLat.innerText = `Lat: ${lat}`;
+  windSpeed.innerText = `Wind Speed: ${speed}M/s`;
+}
+
+function startTime(){
+  setInterval(() => {
+    getDateTime();
+  }, 500);
+}
+
 export async function getWeatherInfo(city) {
-  const api_key = '4c726c2ad8e25995fa54253e43f9b966';
+  const apiKey = '4c726c2ad8e25995fa54253e43f9b966';
   waitMsg.innerText = 'Loading.....';
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`, {mode: 'cors'});
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`, {mode: 'cors' });
     const weatherdata = await response.json();
-    waitMsg.innerText = '';   
-    const icon = weatherdata.weather[0].icon;
+    waitMsg.innerText = '';  
+    const {icon} = weatherdata.weather[0];
     currentIcon.innerHTML = `<img src="./icons/${icon}.png">`;
     getCountyFlag(weatherdata.sys.country);
     temp = Math.floor(weatherdata.main.temp - 273);
@@ -34,16 +61,12 @@ export async function getWeatherInfo(city) {
   }
 }
 
-const getCountyFlag = (cCode) => {
-  countryFlag.innerHTML = `<img src="https://www.countryflags.io/${cCode}/flat/64.png">`;
-}
-
 export const getTemperature = () => {
     state = !state;
-    let tValue = tempDisplay.innerText;
+    const tValue = tempDisplay.innerText;
     let targetValue = Number(tValue.slice(0, (tValue.length - 1)));
   if (state) {
-    let fTemp = ((targetValue * 9)/5 + 32).toFixed(2);
+    let fTemp = ((targetValue * 9) / 5 + 32).toFixed(2);
     tempDisplay.innerText = `${fTemp}\u00B0`;
     tempSymbol.innerText = 'F';
     toggleTemp.innerText = 'See temp in C';
@@ -63,25 +86,8 @@ const getDateTime = () => {
   clock.innerText = `Local Time: ${dateTime}`;
 }
 
-function startTime(){
-    setInterval(() => {
-      getDateTime();
-    }, 500);
-}
 
-const dispCountryInfo = (city, countryCode) => {
-  currentCity.innerText = `${city}, `;
-  currentCountry.innerText = countryCode;
-}
 
-const displayFeelsInfo = (feels, description, humid) => {
-  tempFeels.innerText = `Feels Like: ${feels}\u00B0C`;
-  weatherDescrib.innerText = ` ${description}`;
-  humidity.innerText = ` Humidity: ${humid}%`;
-}
 
-const displaySunInfo = (lon, lat, speed) => {
-  cityLon.innerText = `Lon: ${lon}`;
-  cityLat.innerText = `Lat: ${lat}`;
-  windSpeed.innerText = `Wind Speed: ${speed}M/s`;
-}
+
+

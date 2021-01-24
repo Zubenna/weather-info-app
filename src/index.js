@@ -1,13 +1,13 @@
 import {
-  getWeatherInfo, getTemperature, 
+  getWeatherInfo, getTemperature,
 } from './app-logic';
 import {
-enterCity, submitCity, toggleTemp,
+  enterCity, submitCity, toggleTemp,
 } from './documentObjects';
 
 document.addEventListener('DOMContentLoaded', () => {
-    getWeatherInfo('Lagos');
-  });
+  getWeatherInfo('Lagos');
+});
 
 submitCity.addEventListener('click', (e) => {
   e.preventDefault(e);
