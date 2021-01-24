@@ -9,7 +9,7 @@ let state = false;
 
 const getDateTime = () => {
   const today = new Date();
-  const date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+  const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
   const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
   const dateTime = `${date} ${time}`;
   clock.innerText = `Local Time: ${dateTime}`;
@@ -62,8 +62,8 @@ export async function getWeatherInfo(city) {
     displayFeelsInfo(feels, weatherdata.weather[0].description, weatherdata.main.humidity);
     displaySunInfo(weatherdata.coord.lon, weatherdata.coord.lat, weatherdata.wind.speed);
     startTime();
-  } catch  (err) {
-    if  (enterCity.value === '') {
+  } catch (err) {
+    if (enterCity.value === '') {
       errorInfo.innerText = 'Nothing to display, Enter city name';
     }
   }
