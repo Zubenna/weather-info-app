@@ -43,7 +43,7 @@ function startTime() {
 }
 
 export async function getWeatherInfo(city) {
-  const apiKey = '4c726c2ad8e25995fa54253e43f9b966';
+  const apiKey = '8932ba937e10419d1dd1c3d0900ef449';
   waitMsg.innerText = 'Loading.....';
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`, { mode: 'cors' });
